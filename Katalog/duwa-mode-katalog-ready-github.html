@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#30251d">
+<title>Duwa Mode — Katalog Koleksi Busana</title>
+<style>
+:root{
+  --cream:#f7f1e8;--paper:#fffaf4;--brown:#30251d;--gold:#b18145;
+  --line:#dfc7a7;--muted:#76695d;--soft:#efe2d0
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--brown);font-family:Georgia,"Times New Roman",serif}
+.app{max-width:1100px;margin:auto}
+header{padding:30px 18px 22px;text-align:center;background:linear-gradient(145deg,#fffaf3,#eee1cf)}
+.logo{font-size:52px;letter-spacing:-6px}
+.brand{font-size:29px;letter-spacing:8px;margin:5px 0}
+.tag{font-size:11px;letter-spacing:4px;color:var(--muted)}
+.line{height:1px;width:75px;background:var(--gold);margin:16px auto}
+header h1{font-size:30px;margin:12px 0 5px}
+header p{font-size:13px;color:var(--muted);margin:0}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;text-decoration:none;border-radius:12px;padding:12px 17px;border:1px solid var(--line);font-size:13px}
+.btn.dark{background:var(--brown);color:#fff}
+.btn.light{background:var(--paper);color:var(--brown)}
+main{padding:20px 18px 45px}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+.search{flex:1;min-width:210px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font:inherit;color:var(--brown)}
+select{padding:13px;border:1px solid var(--line);border-radius:12px;background:var(--paper);font:inherit;color:var(--brown)}
+.count{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:19px;overflow:hidden;box-shadow:0 10px 30px #3c28130b}
+.photo{aspect-ratio:4/5;background:linear-gradient(145deg,#eee0cd,#d7c1a1);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.placeholder{font-size:54px;opacity:.65}
+.badge{position:absolute;top:11px;left:11px;background:var(--brown);color:white;padding:6px 9px;border-radius:20px;font-size:10px;letter-spacing:.5px}
+.info{padding:15px}
+.category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold)}
+h2{font-size:19px;margin:6px 0}
+.desc{font-size:12px;line-height:1.5;color:var(--muted);min-height:36px}
+.price{font-size:18px;font-weight:bold;margin:11px 0}
+.sizes{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0 13px}
+.size{font-family:Arial,sans-serif;font-size:10px;border:1px solid var(--line);padding:5px 7px;border-radius:7px}
+.size.out{opacity:.4;text-decoration:line-through}
+.order{display:block;text-align:center;text-decoration:none;background:var(--brown);color:#fff;padding:10px;border-radius:10px;font-size:12px}
+.empty{display:none;text-align:center;padding:45px;color:var(--muted)}
+.note{margin:25px 0 0;padding:17px;border:1px dashed var(--line);border-radius:15px;background:var(--paper);font-size:12px;line-height:1.6;color:var(--muted)}
+footer{text-align:center;padding:25px 15px;background:var(--brown);color:#e9d5b7;font-size:11px;line-height:1.7}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.info{padding:11px}.card h2{font-size:15px}.desc{font-size:11px}.price{font-size:16px}.photo{aspect-ratio:3/4}header h1{font-size:24px}.brand{font-size:25px;letter-spacing:6px}}
+
+.status-ready{background:#4f6b4f!important}
+.status-sold{background:#7b3f3f!important}
+.status-preorder{background:#8a6a38!important}
+.stock{font-family:Arial,sans-serif;font-size:10px;color:var(--muted);margin-top:4px}
+.photo img{background:#eee0cd}
+.edit-help{margin:0 0 20px;padding:14px 16px;border-radius:14px;background:#fff8ed;border:1px solid var(--line);font-size:12px;line-height:1.6}
+.edit-help code{background:#f0e3d1;padding:2px 5px;border-radius:5px}
+@media(max-width:520px){
+  .toolbar{align-items:stretch}
+  .search{min-width:100%}
+  .toolbar select{flex:1}
+}
+</style>
+</head>
+<body>
+<div class="app">
+<header>
+  <div class="logo">DM</div>
+  <div class="brand">DUWA MODE</div>
+  <div class="tag">PENJAHIT SINGKAWANG</div>
+  <div class="line"></div>
+  <h1>Katalog Koleksi Busana</h1>
+  <p>Temukan koleksi, cek harga & size, lalu konsultasikan pesanan melalui WhatsApp.</p>
+  <div class="actions">
+    <a class="btn dark" href="https://wa.me/6288291235055?text=Halo%20Duwa%20Mode,%20saya%20ingin%20melihat%20katalog%20koleksi.">💬 Chat WhatsApp</a>
+    <a class="btn light" href="#koleksi">Lihat Koleksi ↓</a>
+  </div>
+</header>
+
+<main id="koleksi">
+
+  <div class="edit-help">
+    <b>📌 Cara update katalog:</b> cukup edit bagian <code>DATA PRODUK</code> di dalam file
+    <code>index.html</code> pada GitHub. Untuk foto, upload gambar ke repository lalu isi nama
+    file pada <code>foto</code>. Tidak perlu mengubah bagian desain atau kode lainnya.
+  </div>
+
+  <div class="toolbar">
+    <input id="search" class="search" type="search" placeholder="Cari nama atau kategori busana...">
+    <select id="category">
+      <option value="all">Semua kategori</option>
+      <option value="wanita">Wanita</option>
+      <option value="pria">Pria</option>
+      <option value="anak">Anak</option>
+    </select>
+    <select id="size">
+      <option value="all">Semua size</option>
+      <option value="S">S</option><option value="M">M</option><option value="L">L</option>
+      <option value="XL">XL</option><option value="XXL">XXL</option>
+      <option value="custom">Custom Size</option>
+    </select>
+    <span class="count" id="count"></span>
+  </div>
+
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty">Koleksi yang dicari belum ditemukan.</div>
+
+  <div class="note">
+    <b>Informasi ukuran:</b> Size yang tampil adalah ukuran yang tersedia pada koleksi contoh.
+    Untuk ukuran di luar size standar, pilih <b>Custom</b> dan konsultasikan ukuran melalui WhatsApp.
+    <br><br>
+    <b>Catatan:</b> Harga, foto, status, dan size dapat diubah dari bagian <b>DATA PRODUK</b> di file ini.
+  </div>
+</main>
+
+<footer>
+  <b>DUWA MODE</b> · PENJAHIT SINGKAWANG<br>
+  📍 Singkawang · 📸 @duwamode · ☎ 0882 9123 5055
+</footer>
+</div>
+
+<script>
+/* ==========================================================
+   DATA PRODUK — EDIT BAGIAN INI SAJA DI GITHUB
+   ==========================================================
+   1. foto: nama file gambar yang di-upload ke repository.
+      Contoh: "amara-dress.jpg"
+   2. status: "READY", "SOLD OUT", atau "PRE-ORDER"
+   3. sizes: daftar ukuran yang tersedia.
+   4. kategori: "wanita", "pria", atau "anak"
+   5. Jika belum ada foto, isi foto: "" agar tampil placeholder.
+   ========================================================== */
+
+const PRODUK = [
+  {
+    nama: "Aurelia Evening Gown",
+    kategori: "wanita",
+    jenis: "Evening Gown",
+    harga: "Rp 1.500.000",
+    status: "READY",
+    foto: "",
+    sizes: ["S","M","L","XL","Custom"],
+    deskripsi: "Gown elegan dengan siluet feminin dan detail premium.",
+    label: "BEST SELLER"
+  },
+  {
+    nama: "Naya Kebaya",
+    kategori: "wanita",
+    jenis: "Kebaya",
+    harga: "Rp 850.000",
+    status: "READY",
+    foto: "",
+    sizes: ["S","M","L","XL","Custom"],
+    deskripsi: "Kebaya modern untuk acara formal, pesta, dan engagement.",
+    label: ""
+  },
+  {
+    nama: "Regent Beskap",
+    kategori: "pria",
+    jenis: "Beskap",
+    harga: "Rp 900.000",
+    status: "READY",
+    foto: "",
+    sizes: ["M","L","XL","XXL","Custom"],
+    deskripsi: "Potongan formal dengan tampilan rapi dan berkelas.",
+    label: "NEW"
+  },
+  {
+    nama: "Sera Dress",
+    kategori: "wanita",
+    jenis: "Dress",
+    harga: "Rp 650.000",
+    status: "READY",
+    foto: "",
+    sizes: ["S","M","L","XL","Custom"],
+    deskripsi: "Dress versatile untuk pesta maupun acara semi-formal.",
+    label: ""
+  },
+  {
+    nama: "Little Prince Set",
+    kategori: "anak",
+    jenis: "Formal Set",
+    harga: "Rp 450.000",
+    status: "READY",
+    foto: "",
+    sizes: ["S","M","L","XL","Custom"],
+    deskripsi: "Set jas anak untuk pesta, pageant, dan acara spesial.",
+    label: ""
+  },
+  {
+    nama: "Princess Tulle Dress",
+    kategori: "anak",
+    jenis: "Dress",
+    harga: "Rp 550.000",
+    status: "READY",
+    foto: "",
+    sizes: ["S","M","L","Custom"],
+    deskripsi: "Dress anak dengan volume lembut untuk pesta dan panggung.",
+    label: "FAVORITE"
+  }
+];
+
+/* ==========================================================
+   KODE WEBSITE — TIDAK PERLU DIUBAH
+   ========================================================== */
+
+const WA_NUMBER = "6288291235055";
+const grid = document.getElementById("grid");
+const search = document.getElementById("search");
+const category = document.getElementById("category");
+const size = document.getElementById("size");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+
+function escapeHtml(text){
+  return String(text ?? "").replace(/[&<>"']/g, ch => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  }[ch]));
+}
+
+function makeWhatsApp(product){
+  const text =
+    `Halo Duwa Mode, saya tertarik dengan ${product.nama}. ` +
+    `Mohon info ketersediaan stok dan ukuran yang tersedia.`;
+  return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`;
+}
+
+function productCard(p){
+  const status = (p.status || "READY").toUpperCase();
+  const statusClass =
+    status === "SOLD OUT" ? "status-sold" :
+    status === "PRE-ORDER" ? "status-preorder" : "status-ready";
+
+  const image = p.foto
+    ? `<img src="${escapeHtml(p.foto)}" alt="${escapeHtml(p.nama)}" loading="lazy">`
+    : `<div class="placeholder">${p.kategori === "anak" ? "🎀" : p.kategori === "pria" ? "🤵" : "👗"}</div>`;
+
+  const sizes = (p.sizes || []).map(s =>
+    `<span class="size">${escapeHtml(s)}</span>`
+  ).join("");
+
+  const orderButton = status === "SOLD OUT"
+    ? `<a class="order" href="${makeWhatsApp(p)}">💬 Tanya Koleksi</a>`
+    : `<a class="order" href="${makeWhatsApp(p)}">💬 Tanya via WhatsApp</a>`;
+
+  return `
+    <article class="card"
+      data-category="${escapeHtml(p.kategori)}"
+      data-size="${escapeHtml((p.sizes || []).join(" "))}"
+      data-name="${escapeHtml(p.nama)}">
+      <div class="photo">
+        <span class="badge ${statusClass}">${escapeHtml(status)}</span>
+        ${p.label ? `<span class="badge" style="left:auto;right:11px">${escapeHtml(p.label)}</span>` : ""}
+        ${image}
+      </div>
+      <div class="info">
+        <div class="category">${escapeHtml(p.kategori)} · ${escapeHtml(p.jenis)}</div>
+        <h2>${escapeHtml(p.nama)}</h2>
+        <div class="desc">${escapeHtml(p.deskripsi)}</div>
+        <div class="price">${escapeHtml(p.harga)}</div>
+        <div class="sizes">${sizes}</div>
+        <div class="stock">${status === "SOLD OUT" ? "Stok saat ini habis" : "Size tersedia sesuai keterangan di atas"}</div>
+        ${orderButton}
+      </div>
+    </article>`;
+}
+
+function render(){
+  grid.innerHTML = PRODUK.map(productCard).join("");
+  filter();
+}
+
+function filter(){
+  const q = search.value.toLowerCase().trim();
+  const c = category.value;
+  const s = size.value;
+  const cards = [...document.querySelectorAll(".card")];
+  let n = 0;
+
+  cards.forEach(card => {
+    const matchText =
+      card.dataset.name.toLowerCase().includes(q) ||
+      card.querySelector(".category").textContent.toLowerCase().includes(q);
+
+    const matchCat = c === "all" || card.dataset.category === c;
+    const matchSize = s === "all" || card.dataset.size.split(" ").includes(s);
+    const show = matchText && matchCat && matchSize;
+
+    card.style.display = show ? "block" : "none";
+    if(show) n++;
+  });
+
+  count.textContent = n + " koleksi";
+  empty.style.display = n ? "none" : "block";
+}
+
+[search, category, size].forEach(x => x.addEventListener("input", filter));
+render();
+</script>
+</body>
+</html>
